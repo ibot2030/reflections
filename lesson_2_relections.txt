@@ -10,18 +10,49 @@ What value do you think it offers?
 				commit as a single repository
 	git status	allows viewing status of our repository
 				for example what files are being tracked vs. which ones are not
-				
+				It also helps identify which files have been moved to staging area vs. which files are still in my working directory(local)
+	git commit 	to commit any changes that you have added to the staging area
+	git diff 	to see difference between 
+	git diff --staged	to see difference between files in staging area and
+						the files that have alread been committed
+	git reset --hard 	will reset any changes that I have made to the file in
+						my working directory. CAUTION: there is no way to undo this command so use it with extreme caution
+	
 
 How can you use the staging area to make sure you have one commit per logical
 change?
+	git diff command can be used to track what changes have been made and once one logical change has been made and a file is added to the staging area, git diff --staged can be use to see the difference between the staging are and the repository. This way you can confirm that one logical change from the previously commited version is being added
 
 What are some situations when branches would be helpful in keeping your history
 organized? How would branches help?
+	Branches are helpful when you want to work on a new feature or something different than the main code line. e.g. you want to keep a production-ready code that is fully tested, while still work on a new feature. By creating a branch, you can continue to offer the production ready code to others while you work on the new feature. Similarly, if you were collaborating with someone where you were working on one feature, while they were working on the other, you both can be on two different branches and can merge these branches together when done. 
+
+	git branch 		shows branch strucutre and which branch is currently
+					checked out (* for the checked out branch)
+	git branch branch-name	
+					would create a new branch with branch-name
+	git checkout branch-name
+					to checkout branch-name
+					Alternatively, follwoing command will serve the purpose of above two commands
+	git checkout -b branch-name
+					where -b tells that we want to create a branch with branch-name and want to check that branch out
+	git log --graph --oneline master branch-name
+					to view branch diagram of master and branch-name
 
 How do the diagrams help you visualize the branch structure?
 
 What is the result of merging two branches together? Why do we represent it in
 the diagram the way we do?
+	git merge master branch-name
+					will merge branch_name to the last version of master
+					before running the merge command, make sure master is the branch that is currently checked out by using git branch command, which will have (*) preceding the branch that is currently checked out
+	git branch -d branch-name
+					will delete the branch label branch-name
+					Note that this will not delete the branch commits, just the branch label. Commits for branch-label will still be available under log
+	git show branch-name 		
+					once two branches are merged, if one were to do a diff on
+					master and branch-name (assuming branch-name was merged onto master) it may show a lot of changes. This could be that branch-name has several commits after it was branched off from master. If you want to see just the changes of branch-name to its parent, simply running git show branch-name will show the changes made to branch-name compared to its parent
+
 
 What are the pros and cons of Git’s automatic merging vs. always doing merges
 manually?
