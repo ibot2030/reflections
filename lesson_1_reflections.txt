@@ -1,0 +1,38 @@
+How did viewing a diff between two versions of a file help you see the bug that was introduced?
+	diff helped identify lines between two files that were different
+	It doesn't have the capability to identify what exactly is different, 
+	that part, user has to figure out themselves
+
+How could having easy access to the entire history of a file make you a more efficient programmer in the long term?
+	It will help track changes that were made in between any revision
+	and allow rolling back to any older revision
+
+What do you think are the pros and cons of manually choosing when to create a commit, like you do in Git, vs having versions automatically saved, like Google Docs does?
+	pros of manually choosing commit point allows user to select what 
+	change point(s) make logical sense as just right amount of change 
+	to create a new revision for. 
+	Con of manually choosing commit point is that if one forgets to 
+	commit, they may have very large number of changes or in worst case
+	if data is lost before committing, they don't have a way to go back
+	Pros of automatically committing is that a new revision is created
+	automatically and one doesn't have to worry about whether or not
+	a backup revision is created.
+	Cons of automatically committing are that there may not be any logical meaning of different commits and there may even be too many or too few commits done compared to the logical changes done
+
+Why do you think some version control systems, like Git, allow saving multiple files in one commit, while others, like Google Docs, treat each file separately?
+	Google docs type version control systems might be made to focus more on individual documents, where git is meant more for code version control. In version control for code, you typically want a snap shot of all the files every time you commit. The reason being that you may heva changed the function definition in one file, but that could very well have affected multiple files. Its also possible that you made change in one file and two other file have to be modified to support the first change. So once you are done with changing the three files, you save all three files with single commit and hence don't have to worry about whether you saved all the files that you made changes to. If saving multiple files was not available, and you forgot to save one of the files that you made changes to, that commit version may not be of much use.
+
+	git clone 		 creat a local copy of a git repository
+					 e.g. git clone https://github.com/udacity/asteroids.git
+	git log 		 shows the revision history of all commits starting from
+					 the most recent one
+	git checkout	 git checkout commit_ID
+	git diff 		 to see difference between two files
+					 git diff reference_file other_file
+
+
+How do we initiate a git repository?
+	git init
+		this will create a .git file. files with a preceding . are hidden files.
+	ls -a
+		can be used to view hidden file
